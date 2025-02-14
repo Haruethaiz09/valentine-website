@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            background-color: #ffccd5;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #d6336c;
+        }
+        .image-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .image-container img {
+            width: 100%;
+            max-height: 500px;
+            border-radius: 15px;
+            display: none;
+            object-fit: cover;
+        }
+        .image-container img.active {
+            display: block;
+        }
+        .controls {
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 5px;
+        }
+        .message-box {
+            background-color: #fff0f6;
+            color: #d6336c;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 60%;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day! 💖</h1>
+    <div class="message-box">รักพ่อกับแม่มากๆ ❤️</div>
+    <div class="image-container">
+        <img src="image/image1.jpg" class="active" alt="Valentine Image 1">
+        <img src="image/image2.jpg" alt="Valentine Image 2">
+        <img src="image/image3.jpg" alt="Valentine Image 3">
+        <img src="image/image4.jpg" alt="Valentine Image 4">    
+    </div>
+    <div class="controls">
+        <button class="btn" onclick="prevImage()">⬅ </button>
+        <button class="btn" onclick="nextImage()">➡</button>
+    </div>
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll('.image-container img');
+        
+        function showImage(i) {
+            images.forEach(img => img.classList.remove('active'));
+            images[i].classList.add('active');
+        }
+
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            showImage(index);
+        }
+
+        function nextImage() {
+            index = (index + 1) % images.length;
+            showImage(index);
+        }
+    </script>
+</body>
+</html>
